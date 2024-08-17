@@ -1,0 +1,6 @@
+@CaveProvider.API_HostAddress = http://localhost:5271
+
+GET {{CaveProvider.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
