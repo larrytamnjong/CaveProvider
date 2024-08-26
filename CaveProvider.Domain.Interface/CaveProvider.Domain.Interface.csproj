@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <Folder Include="Common\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CaveProvider.Core.Helpers\CaveProvider.Core.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

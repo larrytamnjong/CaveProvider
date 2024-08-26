@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using CaveProvider.Database.Context.Interface;
-using Microsoft.Extensions.DependencyInjection;
 using CaveProvider.Core.Helpers.Enums;
 using CaveProvider.Core.Helpers.Utils;
 using CaveProvider.API.Helper;

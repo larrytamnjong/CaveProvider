@@ -2,6 +2,7 @@
 using CaveProvider.Core.Model.Institution;
 using CaveProvider.Database.Context.Interface;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 
 namespace CaveProvider.Database.Context

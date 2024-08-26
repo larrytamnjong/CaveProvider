@@ -17,7 +17,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaveProvider.Identity.API",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaveProvider.Core.Helpers", "CaveProvider.Core.Helpers\CaveProvider.Core.Helpers.csproj", "{5D1E1FA2-95DC-4E2A-BD1D-DE6FC1E89C1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveProvider.Core.Common", "CaveProvider.Core.Common\CaveProvider.Core.Common.csproj", "{5D10935C-96E5-4649-9B7B-03B95F8A058F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaveProvider.Core.Common", "CaveProvider.Core.Common\CaveProvider.Core.Common.csproj", "{5D10935C-96E5-4649-9B7B-03B95F8A058F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{C3AA4734-79B9-414F-9961-4F9B6683CED3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{BC50E877-18F8-4660-B250-6F72FA7D5FB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveProvider.Repository", "CaveProvider.Repository\CaveProvider.Repository.csproj", "{A6B4154E-05B8-43B7-8824-66D1DB85534F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveProvider.Repository.Interface", "CaveProvider.Repository.Interface\CaveProvider.Repository.Interface.csproj", "{D26626BD-AB2F-4CB5-83D8-CB29BFC39139}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveProvider.Domain", "CaveProvider.Domain\CaveProvider.Domain.csproj", "{E12FF75F-5C50-4648-AA9F-7EC6F4EE2F9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveProvider.Domain.Interface", "CaveProvider.Domain.Interface\CaveProvider.Domain.Interface.csproj", "{536A78DD-A778-4062-9E22-6E4F09F5C124}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveProvider.Database", "CaveProvider.Database\CaveProvider.Database.csproj", "{47B02376-230A-46B3-913B-A05C48A71F3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveProvider.Repository.Common", "CaveProvider.Repository.Common\CaveProvider.Repository.Common.csproj", "{55461893-378E-4D97-9062-FC28CEAEECA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +61,30 @@ Global
 		{5D10935C-96E5-4649-9B7B-03B95F8A058F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D10935C-96E5-4649-9B7B-03B95F8A058F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D10935C-96E5-4649-9B7B-03B95F8A058F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6B4154E-05B8-43B7-8824-66D1DB85534F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6B4154E-05B8-43B7-8824-66D1DB85534F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6B4154E-05B8-43B7-8824-66D1DB85534F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6B4154E-05B8-43B7-8824-66D1DB85534F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26626BD-AB2F-4CB5-83D8-CB29BFC39139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D26626BD-AB2F-4CB5-83D8-CB29BFC39139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D26626BD-AB2F-4CB5-83D8-CB29BFC39139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D26626BD-AB2F-4CB5-83D8-CB29BFC39139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E12FF75F-5C50-4648-AA9F-7EC6F4EE2F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E12FF75F-5C50-4648-AA9F-7EC6F4EE2F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E12FF75F-5C50-4648-AA9F-7EC6F4EE2F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E12FF75F-5C50-4648-AA9F-7EC6F4EE2F9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{536A78DD-A778-4062-9E22-6E4F09F5C124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{536A78DD-A778-4062-9E22-6E4F09F5C124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{536A78DD-A778-4062-9E22-6E4F09F5C124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{536A78DD-A778-4062-9E22-6E4F09F5C124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B02376-230A-46B3-913B-A05C48A71F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B02376-230A-46B3-913B-A05C48A71F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B02376-230A-46B3-913B-A05C48A71F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B02376-230A-46B3-913B-A05C48A71F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55461893-378E-4D97-9062-FC28CEAEECA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55461893-378E-4D97-9062-FC28CEAEECA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55461893-378E-4D97-9062-FC28CEAEECA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55461893-378E-4D97-9062-FC28CEAEECA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +95,12 @@ Global
 		{23D5A91A-5194-4B13-BB68-9305218C4AAE} = {AB323A67-C01E-4137-8E39-128215F1DE43}
 		{5D1E1FA2-95DC-4E2A-BD1D-DE6FC1E89C1D} = {44CE74B2-ECCD-453C-A66E-7B3AFF72FAF1}
 		{5D10935C-96E5-4649-9B7B-03B95F8A058F} = {44CE74B2-ECCD-453C-A66E-7B3AFF72FAF1}
+		{A6B4154E-05B8-43B7-8824-66D1DB85534F} = {C3AA4734-79B9-414F-9961-4F9B6683CED3}
+		{D26626BD-AB2F-4CB5-83D8-CB29BFC39139} = {C3AA4734-79B9-414F-9961-4F9B6683CED3}
+		{E12FF75F-5C50-4648-AA9F-7EC6F4EE2F9A} = {BC50E877-18F8-4660-B250-6F72FA7D5FB0}
+		{536A78DD-A778-4062-9E22-6E4F09F5C124} = {BC50E877-18F8-4660-B250-6F72FA7D5FB0}
+		{47B02376-230A-46B3-913B-A05C48A71F3C} = {C3AA4734-79B9-414F-9961-4F9B6683CED3}
+		{55461893-378E-4D97-9062-FC28CEAEECA5} = {C3AA4734-79B9-414F-9961-4F9B6683CED3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6173318-09BB-4319-92C6-BCAB1D742951}

@@ -1,6 +1,11 @@
 ﻿using CaveProvider.Core.Helpers.Result;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CaveProvider.API.Domain.Interface.Common
+namespace CaveProvider.Domain.Interface
 {
     public interface IDataDomain<T> : IDisposable where T : class
     {

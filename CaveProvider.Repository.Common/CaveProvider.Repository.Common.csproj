@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CaveProvider.Core.Helpers\CaveProvider.Core.Helpers.csproj" />
+    <ProjectReference Include="..\CaveProvider.Core.Model\CaveProvider.Core.Model.csproj" />
+    <ProjectReference Include="..\CaveProvider.Database\CaveProvider.Database.csproj" />
+  </ItemGroup>
+
+</Project>

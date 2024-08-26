@@ -1,6 +1,7 @@
-﻿using CaveProvider.API.Domain.Interface.Common;
-using CaveProvider.API.Repository.Interface.Common;
+﻿
 using CaveProvider.Core.Helpers.Result;
+using CaveProvider.Domain.Interface;
+using CaveProvider.Repository.Interface.Common;
 
 namespace CaveProvider.API.Domain.Classes.Common
 {
@@ -17,11 +18,11 @@ namespace CaveProvider.API.Domain.Classes.Common
             return await repository.AddEntity(entity);
         }
 
-       public virtual async Task<T> GetEntityById(Guid id)
+        public virtual async Task<T> GetEntityById(Guid id)
         {
             return await repository.GetEntityById(id);
         }
-       public virtual async Task<RepositoryActionResult> DeleteEntityById(Guid Id)
+        public virtual async Task<RepositoryActionResult> DeleteEntityById(Guid Id)
         {
             return await repository.DeleteEntityById(Id);
         }
@@ -46,20 +47,20 @@ namespace CaveProvider.API.Domain.Classes.Common
             return await repository.GetEntity(entity);
         }
 
-       
+
 
         public virtual async Task<RepositoryActionResult<T>> UpdateEntity(T entity)
         {
             return await repository.UpdateEntity(entity);
         }
-       
+
 
         public virtual async Task<RepositoryActionResult<List<T>>> AddEntities(List<T> list)
         {
             return await repository.AddEntities(list);
         }
 
-        private bool disposedValue = false; 
+        private bool disposedValue = false;
 
         protected virtual void Dispose(bool disposing)
         {
@@ -67,7 +68,7 @@ namespace CaveProvider.API.Domain.Classes.Common
             {
                 if (disposing)
                 {
-                    
+
                 }
 
                 disposedValue = true;
@@ -77,7 +78,7 @@ namespace CaveProvider.API.Domain.Classes.Common
 
         void IDisposable.Dispose()
         {
-           
+
             Dispose(true);
 
         }

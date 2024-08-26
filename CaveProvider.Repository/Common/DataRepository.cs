@@ -1,14 +1,12 @@
-﻿using CaveProvider.API.Helper;
-using CaveProvider.API.Repository.Interface.Common;
-using CaveProvider.Core.Common.Interface.ChangeTracker;
-using CaveProvider.Core.Common.Model.ChangeTracker;
+﻿using CaveProvider.Core.Common.Interface.ChangeTracker;
 using CaveProvider.Core.Helpers.Enums;
 using CaveProvider.Core.Helpers.Result;
 using CaveProvider.Database.Context.Interface;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Serialization;
+using CaveProvider.Repository.Interface.Common;
 
-namespace CaveProvider.API.Repository.Classes.Common
+
+namespace CaveProvider.Repository.Common
 {
     public abstract class DataRepository<T> : ReferenceHelper, IDataRepository<T> where T : class
     {
@@ -21,7 +19,7 @@ namespace CaveProvider.API.Repository.Classes.Common
         {
             try
             {
-         
+
                 context.Set<T>().Add(entity);
                 var result = await context.SaveChangesAsync();
 
@@ -166,7 +164,7 @@ namespace CaveProvider.API.Repository.Classes.Common
         {
             try
             {
-                
+
 
                 foreach (var item in list)
                 {

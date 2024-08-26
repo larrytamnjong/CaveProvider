@@ -1,9 +1,10 @@
-﻿using CaveProvider.Core.Helpers.Result;
+﻿
+using CaveProvider.Core.Helpers.Result;
 
-namespace CaveProvider.API.Repository.Interface.Common
+namespace CaveProvider.Repository.Interface.Common
 {
 
-    public interface IDataRepository<T> : IDisposable where T : class 
+    public interface IDataRepository<T> : IDisposable where T : class
     {
         Task<T> GetEntity(T entity);
         Task<T> GetEntityById(Guid id);
