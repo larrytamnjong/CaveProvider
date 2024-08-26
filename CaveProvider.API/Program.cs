@@ -18,6 +18,16 @@ var jwtSettings = new JwtSettings();
 builder.Configuration.Bind(JwtSettings.SectionName, jwtSettings);
 builder.Services.AddSingleton(Options.Create(jwtSettings));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("default", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddControllers();
 
 
@@ -26,10 +36,12 @@ DataBaseProvider databaseProvider = DatabaseProviderUtil.Set(SettingsManager.App
 if (databaseProvider == DataBaseProvider.SqlServer)
 {
     builder.Services.AddDbContext<ApplicationDbContext, SqlServerDbContext>();
+    builder.Services.AddScoped<IApplicationDbContext, SqlServerDbContext>();
 }
 else if (databaseProvider == DataBaseProvider.Postgres)
 {
     builder.Services.AddDbContext<ApplicationDbContext, PostgresDbContext>();
+    builder.Services.AddScoped<IApplicationDbContext, PostgresDbContext>();
 }
 
 builder.Services.AddAutoMapper(typeof(MappingProfile)); 
@@ -82,10 +94,6 @@ builder.Services.AddSwaggerGen(options => {
 });
 
 
-builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
-builder.Services.AddScoped<ISqlServerDbContext, SqlServerDbContext>();
-builder.Services.AddScoped<IPostgresDbContext, PostgresDbContext>();
-
 
 var app = builder.Build();
 
@@ -103,6 +111,7 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/V1/swagger.json", "Product CaveProvider");
     });
 }
+app.UseCors("default");
 
 app.UseHttpsRedirection();
 

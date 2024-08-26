@@ -4,6 +4,6 @@ namespace CaveProvider.Identity.API.Interface
 {
     public interface IJwtTokenGenerator
     {
-        Task<string> GenerateToken(ApplicationUser user);
+        Task<Token> GenerateToken(ApplicationUser user);
     }
 }

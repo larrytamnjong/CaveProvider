@@ -14,7 +14,7 @@ namespace CaveProvider.Identity.API.Database.Context
                                                           ApplicationUserRole,
                                                           IdentityUserLogin<string>,
                                                           IdentityRoleClaim<string>,
-                                                          IdentityUserToken<string>>, IApplicationDbInterface
+                                                          IdentityUserToken<string>>, IApplicationDbContext
     {
         protected readonly IConfiguration Configuration;
 

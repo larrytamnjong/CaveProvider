@@ -21,7 +21,7 @@ namespace CaveProvider.Identity.API.Models
         [NotMapped]
         public string? Password { get; set; }
 
-        public required int LanguageId { get; set; } 
+        public required int LanguageId { get; set; }
 
         List<ApplicationUserRole>? Roles { get; set; }
 

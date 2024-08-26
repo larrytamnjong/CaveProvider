@@ -28,7 +28,8 @@
     <Folder Include="Database\Migrations\" />
     <Folder Include="Database\Migrations\PostgresMigrations\" />
     <Folder Include="Database\Migrations\SqlServerMigrations\" />
-    <Folder Include="Repository\" />
+    <Folder Include="Migrations\PostgresMigrations\" />
+    <Folder Include="Migrations\SqlServerMigrations\" />
   </ItemGroup>
 
   <ItemGroup>

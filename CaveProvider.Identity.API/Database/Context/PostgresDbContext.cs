@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CaveProvider.Identity.API.Database.Context
 {
-    public class PostgresDbContext : ApplicationDbContext, IPostfresDbContext
+    public class PostgresDbContext : ApplicationDbContext, IPostgresDbContext
     {
         public PostgresDbContext(IConfiguration configuration) : base(configuration) { }
 

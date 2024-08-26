@@ -29,10 +29,10 @@ namespace CaveProvider.Identity.API.Helpers
                 identity.AddClaims([new Claim(ClaimTypes.GivenName, user.GivenName)]);
             }
 
-            if (!string.IsNullOrWhiteSpace(user.LanguageId.ToString()))
-            {
-                identity.AddClaims([new  Claim("LanguageId", user.LanguageId.ToString())]);
-            }
+            //if (!string.IsNullOrWhiteSpace(user.LanguageId.ToString()))
+            //{
+            //    identity.AddClaims([new  Claim("LanguageId", user.LanguageId.ToString())]);
+            //}
 
             if (!string.IsNullOrWhiteSpace(user.UserName))
             {
@@ -43,7 +43,10 @@ namespace CaveProvider.Identity.API.Helpers
             {
                 identity.AddClaims([ new Claim("UserId", user.Id)]);
             }
-
+            if (!string.IsNullOrWhiteSpace(user.Email))
+            {
+                identity.AddClaims([new Claim("Email", user.Email)]);
+            }
             /*
             //We do not need this because roles are already added to claims when the CreateAsyncMethod is called
             if (roles != null)

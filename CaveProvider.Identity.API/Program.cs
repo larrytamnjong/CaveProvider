@@ -19,6 +19,7 @@ using CaveProvider.Identity.API.Helpers;
 using CaveProvider.Core.Helpers.Enums;
 using CaveProvider.Core.Helpers.Utils;
 using CaveProvider.Identity.API.Interface;
+using CaveProvider.Identity.API.Repository;
 
 
 
@@ -33,7 +34,21 @@ builder.Services.AddSingleton(Options.Create(jwtSettings));
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("default", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+});
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
@@ -44,10 +59,14 @@ DataBaseProvider databaseProvider = DatabaseProviderUtil.Set(SettingsManager.App
 if (databaseProvider == DataBaseProvider.SqlServer)
 {
     builder.Services.AddDbContext<ApplicationDbContext, SqlServerDbContext>();
+    builder.Services.AddScoped<IApplicationDbContext, SqlServerDbContext>();
+
 }
 else if (databaseProvider == DataBaseProvider.Postgres)
 {
     builder.Services.AddDbContext<ApplicationDbContext, PostgresDbContext>();
+    builder.Services.AddScoped<IApplicationDbContext, PostgresDbContext>();
+
 }
 
 
@@ -99,12 +118,13 @@ builder.Services.AddSwaggerGen(options => {
     });
 });
 
-builder.Services.AddScoped<IApplicationDbInterface, ApplicationDbContext>();
-builder.Services.AddScoped<ISqlServerDbContext, SqlServerDbContext>();
-builder.Services.AddScoped<IPostfresDbContext, PostgresDbContext>();
+
 
 builder.Services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ClaimsPrincipalFactory>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
+builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
+builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
 
 var app = builder.Build();
 
@@ -124,7 +144,7 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/V1/swagger.json", "Product CaveProvider");
     });
 }
-
+app.UseCors("default");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

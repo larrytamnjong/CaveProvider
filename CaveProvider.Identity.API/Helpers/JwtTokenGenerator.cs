@@ -1,4 +1,6 @@
-﻿using CaveProvider.Identity.API.Interface;
+﻿using AutoMapper;
+using CaveProvider.Identity.API.Dto;
+using CaveProvider.Identity.API.Interface;
 using CaveProvider.Identity.API.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -15,20 +17,23 @@ namespace CaveProvider.Identity.API.Helpers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IOptions<IdentityOptions> identityOptions;
+        private readonly IMapper mapper;
 
         public JwtTokenGenerator(
                                 IOptions<JwtSettings> jwtOptions,
                                 UserManager<ApplicationUser> userManager,
                                 RoleManager<ApplicationRole> roleManager,
-                                IOptions<IdentityOptions> identityOptions)
+                                IOptions<IdentityOptions> identityOptions,
+                                IMapper mapper)
         {
             jwtSettings = jwtOptions.Value;
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.identityOptions = identityOptions;
+            this.mapper = mapper;
         }
 
-        public async Task<string> GenerateToken(ApplicationUser user)
+        public async Task<Token> GenerateToken(ApplicationUser user)
         {
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret!)),
@@ -46,7 +51,15 @@ namespace CaveProvider.Identity.API.Helpers
                 signingCredentials: signingCredentials
                 );
 
-            return new JwtSecurityTokenHandler().WriteToken(securityToken);
+            var token = new JwtSecurityTokenHandler().WriteToken(securityToken);
+
+            return new Token
+            {
+                Access_token = token,
+                Expires_in = TimeSpan.FromMinutes(jwtSettings.ExpiryMinutes).TotalMilliseconds,
+                
+            };
+
         }
 
     }
