@@ -6,6 +6,8 @@ using CaveProvider.Identity.API.Models;
 using Microsoft.AspNetCore.Identity;
 using CaveProvider.Identity.API.Database.Context.Interface;
 using Azure;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace CaveProvider.Identity.API.Repository
 {
@@ -16,10 +18,12 @@ namespace CaveProvider.Identity.API.Repository
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IApplicationDbContext context;
+        private readonly IRoleRepository roleRepository;
         public AuthenticationRepository(IJwtTokenGenerator jwtTokenGenerator, 
                                  SignInManager<ApplicationUser> signInManager,
                                  UserManager<ApplicationUser> userManager,
                                  IApplicationDbContext context,
+                                 IRoleRepository roleRepository,
                                  IMapper mapper)
         {
             this.jwtTokenGenerator = jwtTokenGenerator;
@@ -27,37 +31,45 @@ namespace CaveProvider.Identity.API.Repository
             this.userManager = userManager;
             this.mapper = mapper;
             this.context = context;
+            this.roleRepository = roleRepository;
         }
 
         public async Task<ServiceResponseBase> SignUp(ApplicationUserDto applicationUserDto)
         {
             try
             {
-                var user = await userManager.FindByEmailAsync(applicationUserDto.Email);
-                if (user != null)
+                if (userManager.Users.Count() < 1)
                 {
-                    return  new ServiceResponse(){ Code = 400, Errors = ["Account already exist"], Success = false };
-                }
-                else
-                {
-                    var applicationUser = mapper.Map<ApplicationUser>(applicationUserDto);
-                    var result = await userManager.CreateAsync(applicationUser, applicationUserDto.Password);
-
-                    if (!result.Succeeded)
+                    var user = await userManager.FindByEmailAsync(applicationUserDto.Email);
+                    if (user != null)
                     {
-                        var errors = result.Errors.Select(error => error.Description).ToList();
-
-                        return  new ServiceResponse(){ Code = 400, Errors = errors, Success = false };
+                        return new ServiceResponse() { Code = 400, Errors = ["Account already exist"], Success = false };
                     }
                     else
                     {
-                        user = await userManager.FindByEmailAsync(applicationUserDto.Email);
-                        var token = await jwtTokenGenerator.GenerateToken(user!);
+                        var applicationUser = mapper.Map<ApplicationUser>(applicationUserDto);
+                        var result = await userManager.CreateAsync(applicationUser, applicationUserDto.Password);
 
-                        return new ServiceResponse<Token> { Messages = ["Account was successfully created"], Data = token, Success = true }; 
+                        if (!result.Succeeded)
+                        {
+                            var errors = result.Errors.Select(error => error.Description).ToList();
+
+                            return new ServiceResponse() { Code = 400, Errors = errors, Success = false };
+                        }
+                        else
+                        {
+                            user = await userManager.FindByEmailAsync(applicationUserDto.Email);
+                            await roleRepository.AssignAllRolesToUser(user!);
+                            var token = await jwtTokenGenerator.GenerateToken(user!);
+
+                            return new ServiceResponse<Token> { Messages = ["Administrator account was successfully created"], Data = token, Success = true };
+                        }
                     }
                 }
-
+                else
+                {
+                    return new ServiceResponse() { Errors = ["Administrator account has already been created. Please request account creation from the administrator."], Success = false, Code = 400 };
+                }
             }
             catch (Exception ex)
             {
@@ -108,7 +120,7 @@ namespace CaveProvider.Identity.API.Repository
                 throw new Exception(ex.Message);
             }
 
-
         }
+
     }
 }

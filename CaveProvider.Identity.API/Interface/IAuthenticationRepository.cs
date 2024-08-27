@@ -1,5 +1,6 @@
 ﻿using CaveProvider.Core.Helpers.Responses;
 using CaveProvider.Identity.API.Dto;
+using CaveProvider.Identity.API.Models;
 
 namespace CaveProvider.Identity.API.Interface
 {
@@ -8,6 +9,7 @@ namespace CaveProvider.Identity.API.Interface
         Task<ServiceResponseBase> SignUp(ApplicationUserDto applicationUserDto);
         Task<ServiceResponseBase> SignIn(LoginDto loginDto);
         Task<ApplicationUserDto> GetSignedInUser(string userId);
+       
     }
 }
  

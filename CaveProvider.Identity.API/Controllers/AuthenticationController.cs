@@ -86,7 +86,7 @@ namespace CaveProvider.Identity.API.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("getsignedinuser")]
+        [Route("getsignedinuserdetails")]
         public async Task<IActionResult> GetSignedInUser()
         {
             try

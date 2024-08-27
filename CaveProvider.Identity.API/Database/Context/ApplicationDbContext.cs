@@ -22,8 +22,6 @@ namespace CaveProvider.Identity.API.Database.Context
         {
             Configuration = configuration;
         }
-        public DbSet<Permission> Permissions { get; set; }
-        public DbSet<RolePermission> RolePermissions { get; set; }
 
 
 
@@ -38,9 +36,6 @@ namespace CaveProvider.Identity.API.Database.Context
         {
             base.OnModelCreating(builder);
 
-            new PermissionConfiguration().Configure(builder.Entity<Permission>());
-            new RolePermissionConfiguration().Configure(builder.Entity<RolePermission>());
-            new UserRoleConfiguration().Configure(builder.Entity<ApplicationUserRole>());
 
 
             builder.Entity<ApplicationUser>(entity => entity.ToTable(name: "Users"));
