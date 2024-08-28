@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CaveProvider.Domain.Interface
+namespace CaveProvider.Domain.Interface.Common
 {
     public interface IDataDomain<T> : IDisposable where T : class
     {
-        Task<T> GetEntity(T entity);
+        Task<T?> GetEntity(T entity);
         Task<T> GetEntityById(Guid id);
         Task<IQueryable<T>> GetEntities();
         Task<RepositoryActionResult<T>> AddEntity(T entity);

@@ -10,7 +10,7 @@ namespace CaveProvider.Database.Context.Interface
     {
         DatabaseFacade Database { get; }
 
-        DbSet<Institution> Institutions { get; set; }
+        DbSet<Institution> Institution { get; set; }
         DbSet<TEntity> Set<TEntity>() where TEntity : class; EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

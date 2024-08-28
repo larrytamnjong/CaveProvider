@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CaveProvider.Core.Common\CaveProvider.Core.Common.csproj" />
     <ProjectReference Include="..\CaveProvider.Core.Helpers\CaveProvider.Core.Helpers.csproj" />
+    <ProjectReference Include="..\CaveProvider.Core.Model\CaveProvider.Core.Model.csproj" />
     <ProjectReference Include="..\CaveProvider.Database\CaveProvider.Database.csproj" />
     <ProjectReference Include="..\CaveProvider.Repository.Common\CaveProvider.Repository.Common.csproj" />
     <ProjectReference Include="..\CaveProvider.Repository.Interface\CaveProvider.Repository.Interface.csproj" />

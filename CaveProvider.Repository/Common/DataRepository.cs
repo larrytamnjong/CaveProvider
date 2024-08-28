@@ -4,13 +4,14 @@ using CaveProvider.Core.Helpers.Result;
 using CaveProvider.Database.Context.Interface;
 using Microsoft.EntityFrameworkCore;
 using CaveProvider.Repository.Interface.Common;
+using Microsoft.AspNetCore.Http;
 
 
 namespace CaveProvider.Repository.Common
 {
     public abstract class DataRepository<T> : ReferenceHelper, IDataRepository<T> where T : class
     {
-        public DataRepository(IApplicationDbContext context) : base(context) { }
+        public DataRepository(IApplicationDbContext context, IHttpContextAccessor httpContextAccessor) : base(context, httpContextAccessor) { }
 
 
 
@@ -19,7 +20,6 @@ namespace CaveProvider.Repository.Common
         {
             try
             {
-
                 context.Set<T>().Add(entity);
                 var result = await context.SaveChangesAsync();
 
@@ -117,7 +117,7 @@ namespace CaveProvider.Repository.Common
             }
         }
 
-        public abstract Task<T> GetEntity(T entity);
+        public abstract Task<T?> GetEntity(T entity);
         public abstract Task<RepositoryActionResult> DeleteEntityById(Guid Id);
         public abstract Task<T> GetEntityById(Guid id);
 
@@ -125,8 +125,11 @@ namespace CaveProvider.Repository.Common
         {
             try
             {
+                
 
                 var existingRecord = await GetEntity(entity);
+
+                 
                 if (existingRecord != null)
                 {
                     context.Entry(existingRecord).State = EntityState.Detached;

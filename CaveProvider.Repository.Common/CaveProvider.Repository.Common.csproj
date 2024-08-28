@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CaveProvider.Core.Helpers\CaveProvider.Core.Helpers.csproj" />
     <ProjectReference Include="..\CaveProvider.Core.Model\CaveProvider.Core.Model.csproj" />
     <ProjectReference Include="..\CaveProvider.Database\CaveProvider.Database.csproj" />

@@ -30,6 +30,7 @@
     <ProjectReference Include="..\CaveProvider.Core.Model\CaveProvider.Core.Model.csproj" />
     <ProjectReference Include="..\CaveProvider.Database\CaveProvider.Database.csproj" />
     <ProjectReference Include="..\CaveProvider.Domain\CaveProvider.Domain.csproj" />
+    <ProjectReference Include="..\CaveProvider.Repository\CaveProvider.Repository.csproj" />
   </ItemGroup>
 
 </Project>

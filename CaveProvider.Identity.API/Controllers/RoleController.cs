@@ -23,6 +23,5 @@ namespace CaveProvider.Identity.API.Controllers
             return StatusCode(StatusCodes.Status200OK, result);
 
         }
-
     }
 }

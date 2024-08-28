@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CaveProvider.Core.Helpers\CaveProvider.Core.Helpers.csproj" />
+    <ProjectReference Include="..\CaveProvider.Core.Model\CaveProvider.Core.Model.csproj" />
   </ItemGroup>
 
 </Project>

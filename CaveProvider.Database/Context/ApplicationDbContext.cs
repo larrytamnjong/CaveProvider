@@ -15,7 +15,7 @@ namespace CaveProvider.Database.Context
             Configuration = configuration;
         }
 
-        public DbSet<Institution> Institutions { get; set; }
+        public DbSet<Institution> Institution { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

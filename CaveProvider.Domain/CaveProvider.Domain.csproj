@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CaveProvider.Core.Model\CaveProvider.Core.Model.csproj" />
     <ProjectReference Include="..\CaveProvider.Domain.Interface\CaveProvider.Domain.Interface.csproj" />
     <ProjectReference Include="..\CaveProvider.Repository.Interface\CaveProvider.Repository.Interface.csproj" />
   </ItemGroup>

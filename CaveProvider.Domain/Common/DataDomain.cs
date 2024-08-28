@@ -1,6 +1,6 @@
 ﻿
 using CaveProvider.Core.Helpers.Result;
-using CaveProvider.Domain.Interface;
+using CaveProvider.Domain.Interface.Common;
 using CaveProvider.Repository.Interface.Common;
 
 namespace CaveProvider.API.Domain.Classes.Common
@@ -42,7 +42,7 @@ namespace CaveProvider.API.Domain.Classes.Common
             return await repository.GetEntities();
         }
 
-        public virtual async Task<T> GetEntity(T entity)
+        public virtual async Task<T?> GetEntity(T entity)
         {
             return await repository.GetEntity(entity);
         }

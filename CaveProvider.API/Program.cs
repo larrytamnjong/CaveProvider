@@ -10,6 +10,10 @@ using CaveProvider.Database.Context.Interface;
 using CaveProvider.Core.Helpers.Enums;
 using CaveProvider.Core.Helpers.Utils;
 using CaveProvider.API.Helper;
+using CaveProvider.Domain.Interface;
+using CaveProvider.Domain;
+using CaveProvider.Repository.Interface;
+using CaveProvider.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +55,7 @@ builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    
 }).AddJwtBearer(
     options => options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -60,7 +65,7 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = jwtSettings.Issuer,
         ValidAudience = jwtSettings.Audience,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret!))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret!)),
     });
 
 builder.Services.AddSwaggerGen(options => {
@@ -93,6 +98,13 @@ builder.Services.AddSwaggerGen(options => {
 });
 
 
+
+#region Institution
+builder.Services.AddScoped<IInstitutionDomain, InstitutionDomain>();
+builder.Services.AddScoped<IInstitutionRepository, InstitutionRepository>();
+#endregion
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
