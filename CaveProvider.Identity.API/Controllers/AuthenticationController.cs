@@ -29,22 +29,15 @@ namespace CaveProvider.Identity.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> SignUp([FromBody] ApplicationUserDto applicationUserDto)
         {
-            try
-            {
-                var result = await authenticationRepository.SignUp(applicationUserDto);
-                if (!result.Success)
-                {
-                    return StatusCode(StatusCodes.Status400BadRequest, result);
-                }
-                else
-                {
-                    return StatusCode(StatusCodes.Status202Accepted, result);
-                }
 
-            }
-            catch (Exception ex)
+            var result = await authenticationRepository.SignUp(applicationUserDto);
+            if (!result.Success)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return StatusCode(StatusCodes.Status400BadRequest, result);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status202Accepted, result);
             }
 
         }
@@ -54,25 +47,17 @@ namespace CaveProvider.Identity.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> SignIn([FromBody] LoginDto loginDto)
         {
-            try
+
+            var result = await authenticationRepository.SignIn(loginDto);
+
+            if (!result.Success)
             {
-                var result = await authenticationRepository.SignIn(loginDto);
-
-
-                if (!result.Success)
-                {
-                    return StatusCode(StatusCodes.Status404NotFound, result);
-                }
-
-                else
-                {
-                    return StatusCode(StatusCodes.Status202Accepted, result);
-                }
-
+                return StatusCode(StatusCodes.Status404NotFound, result);
             }
-            catch (Exception ex)
+
+            else
             {
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return StatusCode(StatusCodes.Status202Accepted, result);
             }
         }
 
@@ -89,17 +74,12 @@ namespace CaveProvider.Identity.API.Controllers
         [Route("getsignedinuserdetails")]
         public async Task<IActionResult> GetSignedInUser()
         {
-            try
-            {
-                var userId = User.GetUserId();
-                var result = await authenticationRepository.GetSignedInUser(userId);
-                return StatusCode(StatusCodes.Status202Accepted, result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
 
-            }
+            var userId = User.GetUserId();
+            var result = await authenticationRepository.GetSignedInUser(userId);
+            return StatusCode(StatusCodes.Status202Accepted, result);
+
+
         }
     }
 }

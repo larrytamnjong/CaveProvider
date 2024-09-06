@@ -1,12 +1,8 @@
 ﻿using CaveProvider.Core.Common.Interface.ChangeTracker;
 using CaveProvider.Core.Common.Model.ChangeTracker;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CaveProvider.Core.Model.Institution
 {
@@ -28,6 +24,9 @@ namespace CaveProvider.Core.Model.Institution
         [Required]
         public required string PhoneNumber { get; set; }
         public string? Code { get; set; }
-        public string? AlternativeCode { get; set; } 
+
+        public string? AlternativeCode { get; set; }
+        public string? Logo { get; set; }
     } 
 }
+ 

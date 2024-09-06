@@ -8,8 +8,7 @@ namespace CaveProvider.Identity.API.Helpers
     {
         public MappingProfile()
         {
-            CreateMap<ApplicationUser, ApplicationUserDto>();
-            CreateMap<ApplicationUserDto, ApplicationUser>();
+            CreateMap<ApplicationUser, ApplicationUserDto>().ReverseMap();
         }
     }
 }

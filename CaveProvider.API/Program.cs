@@ -14,6 +14,7 @@ using CaveProvider.Domain.Interface;
 using CaveProvider.Domain;
 using CaveProvider.Repository.Interface;
 using CaveProvider.Repository;
+using CaveProvider.API.ExceptionHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,12 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+
+#region Exception Handlers
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+#endregion
 
 builder.Services.AddControllers();
 
@@ -106,6 +113,9 @@ builder.Services.AddScoped<IInstitutionRepository, InstitutionRepository>();
 
 builder.Services.AddHttpContextAccessor();
 
+
+
+
 var app = builder.Build();
 
 using (var serviceScope = app.Services.CreateScope())
@@ -113,7 +123,7 @@ using (var serviceScope = app.Services.CreateScope())
     var databaseContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     databaseContext.Database.Migrate();
 }
-
+app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {

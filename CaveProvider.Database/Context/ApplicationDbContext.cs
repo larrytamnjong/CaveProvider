@@ -15,7 +15,12 @@ namespace CaveProvider.Database.Context
             Configuration = configuration;
         }
 
+        #region Institution
+        public DbSet<AcademicPeriod> AcademicPeriods { get; set; }
         public DbSet<Institution> Institution { get; set; }
+
+        
+        #endregion
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

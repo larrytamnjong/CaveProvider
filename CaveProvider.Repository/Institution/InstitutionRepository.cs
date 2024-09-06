@@ -5,15 +5,11 @@ using CaveProvider.Repository.Common;
 using CaveProvider.Repository.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CaveProvider.Repository
 {
-    public class InstitutionRepository: DataRepository<Institution>, IInstitutionRepository
+    public class InstitutionRepository : DataRepository<Institution>, IInstitutionRepository
     {
         public InstitutionRepository(IApplicationDbContext context, IHttpContextAccessor httpContextAccessor) : base(context, httpContextAccessor) { }
 
@@ -25,10 +21,12 @@ namespace CaveProvider.Repository
 
         public override async Task<Institution?> GetEntity(Institution entity)
         {
-            return await context.Institution.FirstOrDefaultAsync(institution => institution.Id == entity.Id);   
+            
+            var result = await context.Institution.FirstOrDefaultAsync(institution => institution.Id == entity.Id);
+            return result;
         }
 
-        public override Task<Institution> GetEntityById(Guid id)
+        public override async Task<Institution> GetEntityById(Guid id)
         {
             throw new NotImplementedException();
         }

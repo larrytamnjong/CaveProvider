@@ -1,5 +1,5 @@
-﻿using CaveProvider.Domain.Interface.Common;
-using CaveProvider.Core.Model.Institution;
+﻿using CaveProvider.Core.Model.Institution;
+using CaveProvider.Domain.Interface.Common;
 
 namespace CaveProvider.Domain.Interface
 {

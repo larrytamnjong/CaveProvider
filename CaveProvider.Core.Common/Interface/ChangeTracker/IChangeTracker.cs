@@ -9,9 +9,9 @@ namespace CaveProvider.Core.Common.Interface.ChangeTracker
     public interface IChangeTracker
     {
         DateTime DateAdded { get; set; }
-        DateTime DateLastModified { get; set; }
+        DateTime? DateLastModified { get; set; }
         bool IsDeleted { get; set; }
-        string AddedBy { get; set; }
-        string ModifiedBy { get; set; }
+        string? AddedBy { get; set; }
+        string? ModifiedBy { get; set; }
     }
 }

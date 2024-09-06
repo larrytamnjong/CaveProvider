@@ -20,6 +20,7 @@ using CaveProvider.Core.Helpers.Enums;
 using CaveProvider.Core.Helpers.Utils;
 using CaveProvider.Identity.API.Interface;
 using CaveProvider.Identity.API.Repository;
+using CaveProvider.API.ExceptionHandler;
 
 
 
@@ -44,6 +45,11 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+#region Exception Handlers
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+#endregion
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
@@ -136,6 +142,7 @@ using (var serviceScope = app.Services.CreateScope())
     databaseContext.Database.Migrate();
 }
 
+app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
@@ -144,6 +151,7 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/V1/swagger.json", "Product CaveProvider");
     });
 }
+
 app.UseCors("default");
 app.UseHttpsRedirection();
 
