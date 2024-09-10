@@ -11,6 +11,8 @@ Before running this code, you should have experience with the following:
 ## Getting Started
 
 ### Prerequisites
+ - Visual Studio
+ - Dot Net SDK
  - Postgres
  - SqlServer
 
