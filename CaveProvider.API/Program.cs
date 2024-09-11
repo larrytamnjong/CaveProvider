@@ -109,6 +109,8 @@ builder.Services.AddSwaggerGen(options => {
 #region Institution
 builder.Services.AddScoped<IInstitutionDomain, InstitutionDomain>();
 builder.Services.AddScoped<IInstitutionRepository, InstitutionRepository>();
+builder.Services.AddScoped<IAcademicYearDomain, AcademicYearDomain>();
+builder.Services.AddScoped<IAcademicYearRepository, AcademicYearRepository>();
 #endregion
 
 builder.Services.AddHttpContextAccessor();

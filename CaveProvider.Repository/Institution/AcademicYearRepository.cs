@@ -4,24 +4,25 @@ using CaveProvider.Database.Context.Interface;
 using CaveProvider.Repository.Common;
 using CaveProvider.Repository.Interface;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace CaveProvider.Repository
 {
-    public class AcademicPeriodRepository : DataRepository<AcademicPeriod>, IAcademicPeriodRepository
+    public class AcademicYearRepository : DataRepository<AcademicYear>, IAcademicYearRepository
     {
-        public AcademicPeriodRepository(IApplicationDbContext context, IHttpContextAccessor httpContextAccessor) : base(context, httpContextAccessor) { }
+        public AcademicYearRepository(IApplicationDbContext context, IHttpContextAccessor httpContextAccessor) : base(context, httpContextAccessor) { }
         public override Task<RepositoryActionResult> DeleteEntityById(Guid Id)
         {
             throw new NotImplementedException();
         }
 
-        public override Task<AcademicPeriod?> GetEntity(AcademicPeriod entity)
+        public override async Task<AcademicYear?> GetEntity(AcademicYear entity)
         {
-            throw new NotImplementedException();
+            return await context.AcademicYears.FirstOrDefaultAsync(e => e.Id == entity.Id);
         }
 
-        public override Task<AcademicPeriod> GetEntityById(Guid id)
+        public override Task<AcademicYear> GetEntityById(Guid id)
         {
             throw new NotImplementedException();
         }

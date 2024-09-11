@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CaveProvider.Domain.Interface
 {
-    public interface IAcademicPeriodDomain: IDataDomain<AcademicPeriod>
+    public interface IAcademicYearDomain: IDataDomain<AcademicYear>
     {
     }
 }

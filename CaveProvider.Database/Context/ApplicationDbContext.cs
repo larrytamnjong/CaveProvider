@@ -16,7 +16,7 @@ namespace CaveProvider.Database.Context
         }
 
         #region Institution
-        public DbSet<AcademicPeriod> AcademicPeriods { get; set; }
+        public DbSet<AcademicYear> AcademicYears { get; set; }
         public DbSet<Institution> Institution { get; set; }
 
         

@@ -22,7 +22,7 @@ namespace CaveProvider.Database.Migrations.SqlServerMigrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CaveProvider.Core.Model.Institution.AcademicPeriod", b =>
+            modelBuilder.Entity("CaveProvider.Core.Model.Institution.AcademicYear", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace CaveProvider.Database.Migrations.SqlServerMigrations
                     b.Property<DateTime?>("DateLastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -53,12 +53,12 @@ namespace CaveProvider.Database.Migrations.SqlServerMigrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AcademicPeriods");
+                    b.ToTable("AcademicYears");
                 });
 
             modelBuilder.Entity("CaveProvider.Core.Model.Institution.Institution", b =>

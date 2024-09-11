@@ -12,7 +12,7 @@ namespace CaveProvider.Database.Context.Interface
 
         #region Institution
         DbSet<Institution> Institution { get; set; }
-        DbSet<AcademicPeriod> AcademicPeriods { get; set; }
+        DbSet<AcademicYear> AcademicYears { get; set; }
         #endregion
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class; EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;

@@ -4,7 +4,7 @@ using CaveProvider.Repository.Interface.Common;
 
 namespace CaveProvider.Repository.Interface
 {
-    public interface IAcademicPeriodRepository: IDataRepository<AcademicPeriod>
+    public interface IAcademicYearRepository: IDataRepository<AcademicYear>
     {
     }
 }

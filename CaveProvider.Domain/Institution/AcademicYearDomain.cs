@@ -6,9 +6,9 @@ using CaveProvider.Repository.Interface;
 
 namespace CaveProvider.Domain
 {
-    public class AcademicPeriodDomain: DataDomain<AcademicPeriod>, IAcademicPeriodDomain
+    public class AcademicYearDomain: DataDomain<AcademicYear>, IAcademicYearDomain
     {
-        public AcademicPeriodDomain(IAcademicPeriodRepository repository) :base(repository) { }
+        public AcademicYearDomain(IAcademicYearRepository repository) :base(repository) { }
 
     }
 }
