@@ -16,6 +16,11 @@ namespace CaveProvider.Database.Context.Interface
         DbSet<Term> Terms { get; set; }
         #endregion
 
+        #region
+        DbSet<Section> Sections { get; set; }
+        #endregion
+
+
         DbSet<TEntity> Set<TEntity>() where TEntity : class; EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

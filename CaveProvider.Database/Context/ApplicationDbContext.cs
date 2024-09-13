@@ -20,8 +20,10 @@ namespace CaveProvider.Database.Context
         public DbSet<AcademicYear> AcademicYears { get; set; }
         public DbSet<Institution> Institution { get; set; }
         public DbSet<Term> Terms { get; set; }
+        #endregion
 
-        
+        #region Section
+        public DbSet<Section> Sections { get; set; }
         #endregion
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

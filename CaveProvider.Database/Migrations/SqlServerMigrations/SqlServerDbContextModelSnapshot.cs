@@ -147,25 +147,58 @@ namespace CaveProvider.Database.Migrations.SqlServerMigrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d52fee49-2afc-4d0c-aa80-8af8add7938f"),
-                            DateAdded = new DateTime(2024, 9, 13, 11, 33, 30, 554, DateTimeKind.Utc).AddTicks(2921),
+                            Id = new Guid("963eba32-e84b-430d-b531-5a689c25fdc8"),
+                            DateAdded = new DateTime(2024, 9, 13, 13, 12, 55, 749, DateTimeKind.Utc).AddTicks(1119),
                             IsDeleted = false,
                             Name = "First Term"
                         },
                         new
                         {
-                            Id = new Guid("e6b6a720-f6e4-42b6-be2f-a5cd0e73231b"),
-                            DateAdded = new DateTime(2024, 9, 13, 11, 33, 30, 554, DateTimeKind.Utc).AddTicks(2951),
+                            Id = new Guid("084ee7ca-6414-4202-b672-f96324b9b71d"),
+                            DateAdded = new DateTime(2024, 9, 13, 13, 12, 55, 749, DateTimeKind.Utc).AddTicks(1149),
                             IsDeleted = false,
                             Name = "Second Term"
                         },
                         new
                         {
-                            Id = new Guid("14821966-8d27-4a07-861d-babd2ac402df"),
-                            DateAdded = new DateTime(2024, 9, 13, 11, 33, 30, 554, DateTimeKind.Utc).AddTicks(2954),
+                            Id = new Guid("ae6b83f9-e5fe-414f-b290-2743cff4f3d1"),
+                            DateAdded = new DateTime(2024, 9, 13, 13, 12, 55, 749, DateTimeKind.Utc).AddTicks(1151),
                             IsDeleted = false,
                             Name = "Third Term"
                         });
+                });
+
+            modelBuilder.Entity("CaveProvider.Core.Model.Section", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AddedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateLastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sections");
                 });
 #pragma warning restore 612, 618
         }

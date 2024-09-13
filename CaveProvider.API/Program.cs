@@ -116,6 +116,12 @@ builder.Services.AddScoped<ITermDomain, TermDomain>();
 builder.Services.AddScoped<ITermRespository,  TermRepository>();
 #endregion
 
+
+#region Section
+builder.Services.AddScoped<ISectionDomain, SectionDomain>();
+builder.Services.AddScoped<ISectionRepository, SectionRepository>();
+#endregion
+
 builder.Services.AddHttpContextAccessor();
 
 

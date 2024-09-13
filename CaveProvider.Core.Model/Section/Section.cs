@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CaveProvider.Core.Model.Section
+namespace CaveProvider.Core.Model
 {
     public class Section: ChangeTracker
     {
@@ -16,9 +16,8 @@ namespace CaveProvider.Core.Model.Section
         public Guid Id { get; set; }
         [Required]
         public required string Name { get; set; }
-        [Required]
-        public required string Description { get; set; }
-        [Required]
-        public required string InstitutionId { get; set; }
+        
+        public string? Description { get; set; }
+
     } 
 }
