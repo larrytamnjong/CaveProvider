@@ -114,6 +114,59 @@ namespace CaveProvider.Database.Migrations.PostgresMigrations
 
                     b.ToTable("Institution");
                 });
+
+            modelBuilder.Entity("CaveProvider.Core.Model.Institution.Term", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AddedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateLastModified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Terms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("0f715c96-b14c-4505-8d14-64789908fdb3"),
+                            DateAdded = new DateTime(2024, 9, 13, 11, 34, 11, 625, DateTimeKind.Utc).AddTicks(5898),
+                            IsDeleted = false,
+                            Name = "First Term"
+                        },
+                        new
+                        {
+                            Id = new Guid("88a0a0c8-d8a3-43d5-9f35-b9c0be502396"),
+                            DateAdded = new DateTime(2024, 9, 13, 11, 34, 11, 625, DateTimeKind.Utc).AddTicks(5930),
+                            IsDeleted = false,
+                            Name = "Second Term"
+                        },
+                        new
+                        {
+                            Id = new Guid("c89f1868-f2cd-43a0-9202-c43560013956"),
+                            DateAdded = new DateTime(2024, 9, 13, 11, 34, 11, 625, DateTimeKind.Utc).AddTicks(5932),
+                            IsDeleted = false,
+                            Name = "Third Term"
+                        });
+                });
 #pragma warning restore 612, 618
         }
     }

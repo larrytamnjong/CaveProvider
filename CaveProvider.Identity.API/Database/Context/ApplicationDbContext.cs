@@ -46,7 +46,7 @@ namespace CaveProvider.Identity.API.Database.Context
             builder.Entity<IdentityRoleClaim<string>>(entity => entity.ToTable("RoleClaims"));
             builder.Entity<IdentityUserToken<string>>(entity => entity.ToTable("UserTokens"));
 
-            builder.SeedRolesAndPermissions();
+            builder.SeedRoles();
         }
     }
 }

@@ -16,6 +16,7 @@ using CaveProvider.Repository.Interface;
 using CaveProvider.Repository;
 using CaveProvider.API.ExceptionHandler;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 var jwtSettings = new JwtSettings();
@@ -111,6 +112,8 @@ builder.Services.AddScoped<IInstitutionDomain, InstitutionDomain>();
 builder.Services.AddScoped<IInstitutionRepository, InstitutionRepository>();
 builder.Services.AddScoped<IAcademicYearDomain, AcademicYearDomain>();
 builder.Services.AddScoped<IAcademicYearRepository, AcademicYearRepository>();
+builder.Services.AddScoped<ITermDomain, TermDomain>();
+builder.Services.AddScoped<ITermRespository,  TermRepository>();
 #endregion
 
 builder.Services.AddHttpContextAccessor();

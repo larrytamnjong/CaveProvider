@@ -6,7 +6,7 @@ namespace CaveProvider.Identity.API.Database.Seed
 {
     public static class RolesSeed
     {
-        public static void SeedRolesAndPermissions(this ModelBuilder builder)
+        public static void SeedRoles(this ModelBuilder builder)
         {
 
             List<ApplicationRole> roles = [

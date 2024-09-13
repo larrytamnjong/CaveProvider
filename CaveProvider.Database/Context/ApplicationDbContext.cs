@@ -1,6 +1,7 @@
 ﻿using CaveProvider.Core.Model;
 using CaveProvider.Core.Model.Institution;
 using CaveProvider.Database.Context.Interface;
+using CaveProvider.Database.Seed;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -18,6 +19,7 @@ namespace CaveProvider.Database.Context
         #region Institution
         public DbSet<AcademicYear> AcademicYears { get; set; }
         public DbSet<Institution> Institution { get; set; }
+        public DbSet<Term> Terms { get; set; }
 
         
         #endregion
@@ -31,7 +33,7 @@ namespace CaveProvider.Database.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.SeedTerms();
         } 
     }
 }
